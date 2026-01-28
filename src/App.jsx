@@ -1,0 +1,71 @@
+import React from 'react';
+import { Hero } from './components/Hero.jsx';
+import { About } from './components/About.jsx';
+import { Skills } from './components/Skills.jsx';
+import { Projects } from './components/Projects.jsx';
+import { Education } from './components/Education.jsx';
+import { Contact } from './components/Contact.jsx';
+import { useTilt } from './hooks/useTilt.js';
+import { useTabs } from './hooks/useTabs.js';
+
+function Layout({ children }) {
+  React.useEffect(() => {
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear().toString();
+    }
+  }, []);
+
+  const handleThemeToggle = () => {
+    document.documentElement.classList.toggle('theme-alt');
+  };
+
+  return (
+    <>
+      <div className="page-background" />
+      <header className="nav">
+        <div className="nav__logo">
+          Shubh<span>Khare</span>
+        </div>
+        <nav className="nav__links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button
+          className="nav__theme-toggle"
+          type="button"
+          onClick={handleThemeToggle}
+          aria-label="Toggle theme"
+        >
+          <span className="theme-icon theme-icon--moon">●</span>
+        </button>
+      </header>
+      <main className="main">{children}</main>
+      <footer className="footer">
+        <p>
+          © <span id="year" /> Shubh Khare. All rights reserved.
+        </p>
+      </footer>
+    </>
+  );
+}
+
+export default function App() {
+  const tiltRef = useTilt();
+  const tabs = useTabs(['skills', 'interests', 'tools'], 'skills');
+
+  return (
+    <Layout>
+      <Hero tiltRef={tiltRef} />
+      <About />
+      <Skills tabs={tabs} />
+      <Projects />
+      <Education />
+      <Contact />
+    </Layout>
+  );
+}
+
