@@ -29,7 +29,7 @@ function Layout({ children }) {
         </nav>
 
         <a
-          href="/Shubh_Khare_Resume.pdf"
+          href="/Shubh_Resume.pdf"
           download="Shubh_Khare_Resume.pdf"
           className="nav__download-btn"
         >
