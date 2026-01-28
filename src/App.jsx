@@ -9,24 +9,17 @@ import { useTilt } from './hooks/useTilt.js';
 import { useTabs } from './hooks/useTabs.js';
 
 function Layout({ children }) {
-  React.useEffect(() => {
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear().toString();
-    }
-  }, []);
 
-  const handleThemeToggle = () => {
-    document.documentElement.classList.toggle('theme-alt');
-  };
 
   return (
     <>
       <div className="page-background" />
+
       <header className="nav">
         <div className="nav__logo">
           Shubh<span>Khare</span>
         </div>
+
         <nav className="nav__links">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -34,20 +27,20 @@ function Layout({ children }) {
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
         </nav>
-        <button
-          className="nav__theme-toggle"
-          type="button"
-          onClick={handleThemeToggle}
-          aria-label="Toggle theme"
+
+        <a
+          href="/Shubh_Khare_Resume.pdf"
+          download="Shubh_Khare_Resume.pdf"
+          className="nav__download-btn"
         >
-          <span className="theme-icon theme-icon--moon">●</span>
-        </button>
+          Download CV
+        </a>
       </header>
+
       <main className="main">{children}</main>
+
       <footer className="footer">
-        <p>
-          © <span id="year" /> Shubh Khare. All rights reserved.
-        </p>
+        <p>© {new Date().getFullYear()} Shubh Khare. All rights reserved.</p>
       </footer>
     </>
   );
