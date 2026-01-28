@@ -43,7 +43,7 @@ export function Hero({ tiltRef }) {
             <div className="avatar-circle">SK</div>
           </div>
           <div className="hero-card__content">
-            <p className="hero-card__role">Your Role</p>
+            <p className="hero-card__role">Role</p>
             <p className="hero-card__headline">Designing calm, vibe-coded, focused interfaces.</p>
             <div className="hero-card__stats">
               <div>
